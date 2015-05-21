@@ -11,6 +11,9 @@
 				<div align='left'>Choose actions from the bottom menu</div>
 			<?php elseif ( $_GET['action'] == 'add' ): ?>
 				<div align='left'>Adding user</div>
+				<script>
+					changeSize('topGrid','60%');
+				</script>
 				<?php include 'pages/adduser.php'; ?>
 			<?php elseif ( $_GET['action'] == 'change' ): ?>
 				<div align='left'>Changing user</div>

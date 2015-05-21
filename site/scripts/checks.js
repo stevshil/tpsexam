@@ -14,3 +14,14 @@ function chkPassword() {
 	}
 	return true;
 }
+
+function checkRequired(field,regex) {
+	var str=field;
+	var re=new RegExp(regex,"gi");
+	if ( field.search(re) > -1 ) {
+		// Pattern was matched
+		return true;
+	} else {
+		return false;
+	}
+}
