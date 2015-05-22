@@ -19,16 +19,16 @@
 <a class='menu' href='index.php?page=pw'>Change Password</a><br>
 <?php if ( $data[0]['Admin'] == 1 ) : ?>
 <a class='menu' href='index.php?page=users'>Manage Users</a><br>
-<a class='menu' href='index.htm'>Add Questions</a><br>
-<a class='menu' href='index.htm'>Create Test</a><br>
-<a class='menu' href='index.htm'>Assign Test Takers</a><br>
-<a class='menu' href='index.htm'>Add Categories</a>
+<a class='menu' href='index.php?page=questions'>Add Questions</a><br>
+<a class='menu' href='index.php'>Create Test</a><br>
+<a class='menu' href='index.php'>Assign Test Takers</a><br>
+<a class='menu' href='index.php'>Add Categories</a>
 <?php endif; 
 $data = null;
 ?>
 </div>
 <div id='Testmenu' onMouseOut='showMenu("Test")'>
-<a class='menu' href='index.htm'>Select Test</a><br>
-<a class='menu' href='index.htm'>Resume Test</a><br>
-<a class='menu' href='index.htm'>Retake Test</a><br>
+<a class='menu' href='index.php'>Select Test</a><br>
+<a class='menu' href='index.php'>Resume Test</a><br>
+<a class='menu' href='index.php'>Retake Test</a><br>
 </div>

@@ -96,8 +96,15 @@
 		$values=$values . ",Now(),". $_SESSION['UserID'];
 		
 		if ( dbinsert("users",$fields,$values) ) {
-			clearData();
-			die;
+			$data = dbquery("UserID","users","WHERE LoginID='" . $_POST['LoginID'] . "'");
+			if ( dbinsert("shadow","UserID,Password",$data[0]['UserID'] . ",password('secret')") ) {
+				clearData();
+				die;
+			} else {
+				echo "Password did not set";
+				clearData();
+				die;
+			}
 		} else {
 			if ( isset($_POST['LoginID']) ) {
 				$_SESSION['reason']="User " . $_POST['LoginID'] . "already exists";

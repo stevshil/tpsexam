@@ -10,23 +10,25 @@
 			<?php if ( ! isset($_GET['action']) ): ?>
 				<div align='left'>Choose actions from the bottom menu</div>
 			<?php elseif ( $_GET['action'] == 'add' ): ?>
-				<div align='left'>Adding user</div>
+				<div align='left'>Adding question</div>
 				<script>
 					changeSize('topGrid','60%');
 				</script>
-				<?php include 'pages/adduser.php'; ?>
+				<?php include 'pages/addq.php'; ?>
 			<?php elseif ( $_GET['action'] == 'change' ): ?>
-				<div align='left'>Changing user</div>
-			<?php elseif ( $_GET['action'] == 'lock' ): ?>
-				<div align='left'>Locking user</div>
-			<?php elseif ( $_GET['action'] == 'pwreset' ): ?>
-				<div align='left'>Reset users password</div>
+				<div align='left'>Changing question</div>
+				<script>
+					changeSize('topGrid','60%');
+				</script>
+				<?php include 'pages/chq.php'; ?>
+			<?php elseif ( $_GET['action'] == 'delete' ): ?>
+				<div align='left'>Delete question</div>
 			<?php endif; ?>
 	</div>
 	<div id='btmGrid'>
 		<div id='menu' align='left'>
 			<table style='cursor: pointer'><tr>
-			<td class='menu'><a href='index.php?page=users&action=add'>Add User</a></td><td class='menu'><a href='index.php?page=users&action=change'>Change User</a></td><td class='menu'><a href='index.php?page=users&action=lock'>Lock User</a></td><td class='menu'><a href='index.php?page=users&action=pwreset'>Change Users Password</a></td></tr>
+			<td class='menu'><a href='index.php?page=questions&action=add'>Add Question</a></td><td class='menu'><a href='index.php?page=questions&action=change'>Change Question</a></td><td class='menu'><a href='index.php?page=questions&action=delete'>Delete Questions</a></td></tr>
 			</table>
 		</div>
 		<?php endif; ?>

@@ -10,6 +10,8 @@
 			showtext = "Change a users settings";
 		} else if ( subparam == 'lock' ) {
 			showtext = "Lock the user account";
+		} else if ( subparam == 'pwreset' ) {
+			showtext = "Change the users password";
 		} else {
 			showtext = "User administration";
 		}
