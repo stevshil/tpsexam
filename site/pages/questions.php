@@ -10,9 +10,8 @@
 			<?php if ( ! isset($_GET['action']) ): ?>
 				<div align='left'>Choose actions from the bottom menu</div>
 			<?php elseif ( $_GET['action'] == 'add' ): ?>
-				<div align='left'>Adding question</div>
 				<script>
-					changeSize('topGrid','60%');
+					changeSize('topGrid','65%');
 				</script>
 				<?php include 'pages/addq.php'; ?>
 			<?php elseif ( $_GET['action'] == 'change' ): ?>

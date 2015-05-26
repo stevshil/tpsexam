@@ -53,7 +53,7 @@
 		writeQuestionsAndAnswers($questions,$category,$answers);
 	} else {
 		# blulk load cmdline
-		$dataFile = fopen($argv[1],"r") or die("Unable ot open file!");
+		$dataFile = fopen($argv[1],"r") or die("Unable to open file!");
 		while ( ! feof($dataFile) ) {
 			$dataRead = fgets($dataFile);
 			if ( ! preg_match('/\!/', $dataRead) ) {
