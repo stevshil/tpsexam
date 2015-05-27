@@ -9,40 +9,42 @@
 ?>
 <script>
 function addAnswerBoxes(numBoxes) {
+	var container = document.getElementById("answergrid");
+
 	// Add the header to tick box if correct answer
 	//document.getElementById('tickme').style.display = 'block';
 	$(".tickme").show();
-
-	var container = document.getElementById('answergrid');
-	// Clear container
-        while ( container.hasChildNodes() ) {
-                container.removeChild(container.lastChild);
-        }
 	
+	// Clear container
+	while ( container.hasChildNodes() ) {
+		container.removeChild(container.lastChild);
+	}
+
 	// Add the question boxes
 	for ( x = 1; x <= numBoxes; x++ ) {
-		var newdiv = document.createElement('tr');
-		newdiv.innerHTML = '<td>Answer ' + x + ': </td><td> <input type="text" name="answers' + x + '" size="60"> &nbsp; <input type="checkbox" name="correct' + x + '"></td></tr>'
-		container.appendChild(newdiv);
-	}
-}
+		var ans = document.createElement("input");
+		var cor = document.createElement("input");
+		ans.type='text';
+		ans.name='answer' + x;
+		ans.size=60;
+		cor.type='checkbox';
+		cor.name='correct' + x;
+		var row = document.createElement("tr");
+		var cell = document.createElement("td");
+		cell.appendChild(document.createTextNode("Answer " + x + ": "));
+		row.appendChild(cell);
+		container.appendChild(row);
 
-function addAnswers() {
-	var str="";
-	alert("Here");
-	try {
-		for ( i = 0; i < document.getElementsByTagName('input').length; i++ ) {
-			str += document.getElementsByTagName('input').item(i).value;
-		}
-	} catch(e) {
-		alert(e.message);
+		var cell2 = document.createElement("td");
+		cell2.appendChild(container.appendChild(ans));
+		cell2.appendChild(container.appendChild(cor));
+		row.appendChild(cell2);
+		container.appendChild(row);
 	}
-	alert(str)
-	return false
 }
 </script>
 <table align='center'>
-<form id='addq' name='addq' action='pages/addq.php?action=add' method='post' onSubmit='return addAnswers()'>
+<form name='addq' action='pages/addq.php?action=add' method='post'>
 <input type='hidden' name='action2' value='add'>
 <tr><td valign='top' align='right'>Question:</td><td><textarea name='question' rows=4 cols='95'></textarea></td></tr>
 <tr><td colspan='2'>
@@ -65,7 +67,6 @@ function addAnswers() {
 </table></td></tr>
 <tr><td> </td><td class='tickme' align='right' style='display: none'>Tick if correct answer</td></tr>
 <table id='answergrid'></table>
-</td></tr>
 <tr><td colspan='2'><input type='submit' class='tickme' value='Add question' style='display: none'> <input type='reset' class='tickme' value='Clear form' style='display: none'>
 </form>
 </table>

@@ -9,14 +9,17 @@
 		if ( dbinsert('questions','Question,Added,AddedBy',"'$question',Now(),$UserID") ) {
 			# Add the category
 			$qid=dbquery('QID','questions'," WHERE Question='$question'");
-			if ( dbinsert('questionCategory','QID,CategoryID',$qid[0]['QID'] . ",$category") ) {
-				# If question inserts ok, insert the answers
-				for ( $counter=0; $counter <= (count($answers)-1); $counter+=2 ) {
-					$correct=$counter+1;
-					if ( ! dbinsert('answers','AID,QID,Correct,AnswerText,Added,AddedBy',"'" . $qid[0]['QID'] . "-$counter'," . $qid[0]['QID'] . ",'" . chop($answers[$correct]) . "','" . $answers[$counter] . "',Now(),$UserID") ) {
-						echo "DB insert failed to do\n";
-						echo "INSERT INTO answers (QID,Correct,AnswerText,Added,AddedBy) VALUES(" . $qid[0]['QID'] . ",'" . chop($answers[$correct]) . "','" . $answers[$counter] . "',Now(),$UserID)\n";
-					}
+			# Split the categories as they are comma seperated
+			$cats=explode(",",$category); # Breaks line into array
+			foreach ( $cats as &$cat ) {
+				dbinsert('questionCategory','QID,CategoryID',$qid[0]['QID'] . ",$cat");
+			}
+			# If question inserts ok, insert the answers
+			for ( $counter=0; $counter <= (count($answers)-1); $counter+=2 ) {
+				$correct=$counter+1;
+				if ( ! dbinsert('answers','AID,QID,Correct,AnswerText,Added,AddedBy',"'" . $qid[0]['QID'] . "-$counter'," . $qid[0]['QID'] . ",'" . chop($answers[$correct]) . "','" . $answers[$counter] . "',Now(),$UserID") ) {
+					echo "DB insert failed to do\n";
+					echo "INSERT INTO answers (QID,Correct,AnswerText,Added,AddedBy) VALUES(" . $qid[0]['QID'] . ",'" . chop($answers[$correct]) . "','" . $answers[$counter] . "',Now(),$UserID)\n";
 				}
 			}
 		}
@@ -45,12 +48,16 @@
 		$numAnswers = "answer" . $counter;
 		$correctAnswers = "correct" . $counter;
 		while ( isset($_POST[$numAnswers]) ) {
-			array_push($answers, $_POST[$numAnswers],"$correct");
+			array_push($answers, $_POST[$numAnswers],"$correctAnswers");
 			$counter++;
 			$numAnswers = "answer" . $counter;
 			$correctAnswer = "correct" . $counter;
 		}
-		writeQuestionsAndAnswers($questions,$category,$answers);
+		#writeQuestionsAndAnswers($questions,$category,$answers);
+		echo "Data passed is:<br>";
+		echo "Question: " . $question . "<br>";
+		echo "Categories: " . $category . "<br>";
+		echo "Answers: " . count($answers) . "<br>";
 	} else {
 		# blulk load cmdline
 		$dataFile = fopen($argv[1],"r") or die("Unable to open file!");

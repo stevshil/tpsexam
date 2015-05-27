@@ -118,7 +118,7 @@ create table IF NOT EXISTS questionCategory (
 	CategoryID BIGINT UNSIGNED NOT NULL,
 	FOREIGN KEY (QID) REFERENCES questions(QID),
 	FOREIGN KEY (CategoryID) REFERENCES categories(CatID),
-	PRIMARY KEY (QID)
+	PRIMARY KEY (QID,CategoryID)
 );
 
 -- Populate some tables
