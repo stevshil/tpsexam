@@ -19,7 +19,7 @@
 <a class='menu' href='index.php?page=pw'>Change Password</a><br>
 <?php if ( $data[0]['Admin'] == 1 ) : ?>
 <a class='menu' href='index.php?page=users'>Manage Users</a><br>
-<a class='menu' href='index.php?page=questions'>Add Questions</a><br>
+<a class='menu' href='index.php?page=questions'>Manage Questions</a><br>
 <a class='menu' href='index.php'>Create Test</a><br>
 <a class='menu' href='index.php'>Assign Test Takers</a><br>
 <a class='menu' href='index.php'>Add Categories</a>

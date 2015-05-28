@@ -3,8 +3,11 @@
 		session_start();
 
 	if ( isset($_POST['action2']) && $_POST['action2'] == 'add' ) {
+		#echo "Q: " . $_POST['question'] . "<br>A: " . $_POST['answer1'] . " : " . $_POST['correct1'] . "<br>";
 		include '../api/addquestion.php';
-		#header('Refresh:2; url=/exam/index.php?page=questions');
+		header('Refresh:10; url=/exam/index.php?page=questions');
+		echo "Question added";
+		die;
 	}
 ?>
 <script>
@@ -22,22 +25,28 @@ function addAnswerBoxes(numBoxes) {
 	// Add the question boxes
 	for ( x = 1; x <= numBoxes; x++ ) {
 		var newdiv = document.createElement('tr');
-		newdiv.innerHTML = '<td>Answer ' + x + ': </td><td> <input type="text" name="answers' + x + '" size="60"> &nbsp; <input type="checkbox" name="correct' + x + '"></td></tr>'
+		newdiv.innerHTML = '<td>Answer ' + x + ': </td><td> <input type="text" name="answer' + x + '" size="60"> &nbsp; <input type="checkbox" name="correct' + x + '"></td></tr>'
 		container.appendChild(newdiv);
 	}
 }
 
 function addAnswers() {
 	var str="";
-	alert("Here");
 	try {
-		for ( i = 0; i < document.getElementsByTagName('input').length; i++ ) {
-			str += document.getElementsByTagName('input').item(i).value;
+		var elems = document.getElementsByTagName('input');
+		for ( i = 0; i < elems.length; i++ ) {
+			if ( elems.item(i).type == 'checkbox' ) {
+				if ( elems[i].checked == true ) {
+					document.getElementById('addq').appendChild(elems.item(i));
+				}
+			} else if ( elems.item(i).type == 'text' ) {
+				document.getElementById('addq').appendChild(elems.item(i));
+			}
 		}
 	} catch(e) {
 		alert(e.message);
 	}
-	alert(str)
+	document.getElementById('addq').submit();
 	return false
 }
 </script>
@@ -47,7 +56,7 @@ function addAnswers() {
 <tr><td valign='top' align='right'>Question:</td><td><textarea name='question' rows=4 cols='95'></textarea></td></tr>
 <tr><td colspan='2'>
 <table>
-<tr><td align='right' valign='top'>Category Type:</td><td><select name='CategoryID' multiple size=3><?php
+<tr><td align='right' valign='top'>Category Type:</td><td><select name='CategoryID[]' multiple size=3><?php
 	$listItem=dbquery("CatID,CategoryName","categories",null);
 	foreach ( $listItem as &$data ) {
 		echo "<option value='" . $data['CatID'] ."'>" . $data['CategoryName'] . "</option>";

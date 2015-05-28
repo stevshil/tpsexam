@@ -6,6 +6,7 @@
 		} else {
 			$UserID=1;
 		}
+		$question=str_replace("'","''",$question);
 		if ( dbinsert('questions','Question,Added,AddedBy',"'$question',Now(),$UserID") ) {
 			# Add the category
 			$qid=dbquery('QID','questions'," WHERE Question='$question'");
@@ -17,7 +18,7 @@
 			# If question inserts ok, insert the answers
 			for ( $counter=0; $counter <= (count($answers)-1); $counter+=2 ) {
 				$correct=$counter+1;
-				if ( ! dbinsert('answers','AID,QID,Correct,AnswerText,Added,AddedBy',"'" . $qid[0]['QID'] . "-$counter'," . $qid[0]['QID'] . ",'" . chop($answers[$correct]) . "','" . $answers[$counter] . "',Now(),$UserID") ) {
+				if ( ! dbinsert('answers','AID,QID,Correct,AnswerText,Added,AddedBy',"'" . $qid[0]['QID'] . "-$counter'," . $qid[0]['QID'] . ",'" . chop($answers[$correct]) . "','" . str_replace("'","''",$answers[$counter]) . "',Now(),$UserID") ) {
 					echo "DB insert failed to do\n";
 					echo "INSERT INTO answers (QID,Correct,AnswerText,Added,AddedBy) VALUES(" . $qid[0]['QID'] . ",'" . chop($answers[$correct]) . "','" . $answers[$counter] . "',Now(),$UserID)\n";
 				}
@@ -46,18 +47,20 @@
 		$category=$_POST["CategoryID"];
 		$counter=1;
 		$numAnswers = "answer" . $counter;
-		$correctAnswers = "correct" . $counter;
+		$correctAnswer = "correct" . $counter;
 		while ( isset($_POST[$numAnswers]) ) {
-			array_push($answers, $_POST[$numAnswers],"$correctAnswers");
+			if ( isset($_POST[$correctAnswer]) ) {
+				$_POST[$correctAnswer]=1;
+			} else { 
+				$_POST[$correctAnswer]=0;
+			}
+			array_push($answers, $_POST[$numAnswers],$_POST[$correctAnswer]);
 			$counter++;
 			$numAnswers = "answer" . $counter;
 			$correctAnswer = "correct" . $counter;
 		}
-		#writeQuestionsAndAnswers($questions,$category,$answers);
-		echo "Data passed is:<br>";
-		echo "Question: " . $question . "<br>";
-		echo "Categories: " . $category . "<br>";
-		echo "Answers: " . count($answers) . "<br>";
+		$categories = implode(',',$category);
+		writeQuestionsAndAnswers($question,$categories,$answers);
 	} else {
 		# blulk load cmdline
 		$dataFile = fopen($argv[1],"r") or die("Unable to open file!");
