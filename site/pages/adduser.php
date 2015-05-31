@@ -15,7 +15,7 @@
 		$_SESSION['newEmail'] = $_POST['Email'];
 		if ( isset($_POST['Admin']) )
 			$_SESSION['newAdmin'] = $_POST['Admin'];
-		header("Refresh:5; url=/exam/index.php?page=users&action=add", true, 303);
+		header("Refresh:3; url=/exam/index.php?page=users&action=add", true, 303);
 	}
 
 	function clearData() {
@@ -33,7 +33,7 @@
 		$_SESSION['newEmail'] = null;
 		if ( isset($_POST['Admin']) )
 			$_SESSION['newAdmin'] = null;
-		header("Refresh:5; url=/exam/index.php?page=users", true, 303);
+		header("Refresh:3; url=/exam/index.php?page=users", true, 303);
 	}
 
 

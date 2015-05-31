@@ -2,10 +2,10 @@
 	if ( session_status() != PHP_SESSION_ACTIVE )
 		session_start();
 
-	if ( isset($_POST['action2']) && $_POST['action2'] == 'add' ) {
+	if ( isset($_POST['action2']) && $_POST['action2'] == 'add' && $_SESSION["loggedin"] == "yes" ) {
 		#echo "Q: " . $_POST['question'] . "<br>A: " . $_POST['answer1'] . " : " . $_POST['correct1'] . "<br>";
 		include '../api/addquestion.php';
-		header('Refresh:10; url=/exam/index.php?page=questions');
+		header('Refresh:3; url=/exam/index.php?page=questions');
 		echo "Question added";
 		die;
 	}
