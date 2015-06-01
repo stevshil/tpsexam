@@ -45,6 +45,8 @@ function dbquery($inputparams, $tables, $conditions) {
 	} else {
 		$statement = $conn->prepare("SELECT $inputparams FROM $tables $conditions");
 	}
+	#echo "SELECT $inputparams FROM $tables $conditions<br><br>";
+	#echo "<option>SELECT $inputparams FROM $tables $conditions</option>";
 	$statement->execute();
 	$data = $statement->fetchAll(PDO::FETCH_ASSOC);
 	$statement = null;

@@ -6,7 +6,7 @@
 ?>
 <div id='mainbody'>
 	<div id='topGrid'>
-		<?php if ( $_SESSION["loggedin"] == "yes" ): ?>
+		<?php if ( isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == "yes" ): ?>
 			<?php if ( ! isset($_GET['action']) ): ?>
 				<div align='left'>Choose actions from the bottom menu</div>
 			<?php elseif ( $_GET['action'] == 'add' ): ?>
