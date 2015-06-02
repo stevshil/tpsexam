@@ -56,7 +56,6 @@ function dbquery($inputparams, $tables, $conditions) {
 
 function dbupdate($table,$columns,$condition) {
 	$data = Array();
-	$illegalsql='/;/';
 
 	if ( injectionChk($table) || injectionChk($columns) || injectionChk($condition) ) {
 		return "Illegal SQL found";
@@ -70,6 +69,7 @@ function dbupdate($table,$columns,$condition) {
 		}
 	}
 
+	#echo "UPDATE $table SET $columns $condition<br><br>";
 	$statement = $conn->prepare("UPDATE $table SET $columns $condition");
 	try {
 		if ( $statement->execute() ) {
@@ -83,6 +83,9 @@ function dbupdate($table,$columns,$condition) {
 }
 
 function dbinsert($table,$columns,$values) {
+	if ( injectionChk($table) || injectionChk($columns) || injectionChk($values) ) {
+		return "Illegal SQL found";
+	}
 
 	$conn=dbconnect();
 
@@ -93,6 +96,35 @@ function dbinsert($table,$columns,$values) {
 	}
 
 	$statement = $conn->prepare("INSERT INTO $table ($columns) VALUES($values)");
+	try {
+		if ( $statement->execute() ) {
+			return true;
+		} else {
+			return false;
+		}
+	} catch (PDOException $e) {
+		return false;
+	}
+}
+
+function dbdel($table,$condition) {
+	if ( injectionChk($table) || injectionChk($condition) ) {
+		return "Illegal SQL found";
+	}
+
+	if ( empty($table) || empty($condition) ) {
+		return "No table or condition supplied";
+	}
+
+	$conn=dbconnect();
+
+	if ( $conn == "string" ) {
+		if ( preg_match('/An error occurred/', $conn) ) {
+			return "Database connection failed";
+		}
+	}
+
+	$statement = $conn->prepare("DELETE FROM $table $condition");
 	try {
 		if ( $statement->execute() ) {
 			return true;

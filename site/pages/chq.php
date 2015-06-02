@@ -36,6 +36,14 @@
 			}
 		}
 	}
+
+	function checkSelect() {
+		if ( document.selectQuestion.QID.options[document.selectQuestion.QID.selectedIndex].value == '' ) {
+			return false;
+		} else {
+			document.selectQuestion.submit();
+		}
+	}
 </script>
 
 <?php if ( ! isset($_GET['action2']) ) : ?>
@@ -45,7 +53,7 @@
 <input type='hidden' name='action' value='change'>
 <table width='80%'>
 <tr><td>Select a Question</td><td>Filter by Category</td></tr>
-<tr><td><select name='QID' onChange='submit()' size=15>
+<tr><td><select name='QID' onChange='return checkSelect();' size=15>
 <option value=''>--- Please select question ---</option>
 <?php
 	if ( isset($_GET['CID']) ) {
@@ -88,18 +96,18 @@
 	<tr><td valign='top' align='right'>Question:</td><td><textarea name='question' rows=4 cols='95'><?php echo $qInfo[0]['Question'] ?></textarea></td></tr>
 	<tr><td>
 	<?php for ( $counter = 0; $counter < count($qInfo); $counter++ ) : ?>
-	<tr><td>Answer <?php echo $counter ?>: <input type='hidden' name='AID[]' value='<?php echo $qInfo[$counter]['AID'] ?>'></td><td><input type=text name='answer<?php echo $qInfo[$counter]['AID'] ?>' value='<?php echo $qInfo[$counter]['AnswerText'] ?>' size=80> <input type='checkbox' name='correct<?php echo $qInfo[$counter]['AID'] ?>' <?php if ( $qInfo[$counter]['Correct'] == 1 ) {
+	<tr><td>Answer <?php echo $counter ?>: <input type='hidden' name='AID[]' value='<?php echo $qInfo[$counter]['AID'] ?>'></td><td><input type=text name='answer<?php echo $qInfo[$counter]['AID'] ?>' value="<?php echo $qInfo[$counter]['AnswerText'] ?>" size=80> <input type='checkbox' name='correct<?php echo $qInfo[$counter]['AID'] ?>' <?php if ( $qInfo[$counter]['Correct'] == 1 ) {
 		echo "checked" ;
 	} ?>></td></tr>
 	<?php endfor; ?>
 	</td></tr>
 	</tr><td colspan=2><table>
-	<tr><td valign=top>Categories:</td><td><select name='Category[]' size=5 multiple>
+	<tr><td valign=top>Categories:</td><td><select name='Category[]' size="5" multiple>
 	<?php 
 		$cats = qCategories($_GET['QID']);
 		$allcats = catList();
 		for ( $counter = 0; $counter < count($allcats); $counter++ ) {
-			echo "<option value='" . $allcats[$counter]['CategoryID'] . "'";
+			echo "<option value='" . $allcats[$counter]['CatID'] . "'";
 			for ( $catcount = 0; $catcount < count($cats); $catcount++ ) {
 				if ( $allcats[$counter]['CatID'] == $cats[$catcount]['CategoryID'] ) {
 					echo " selected ";
