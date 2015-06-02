@@ -15,13 +15,13 @@
 				</script>
 				<?php include 'pages/addq.php'; ?>
 			<?php elseif ( $_GET['action'] == 'change' ): ?>
-				<div align='left'>Changing question</div>
 				<script>
 					changeSize('topGrid','60%');
 				</script>
 				<?php include 'pages/chq.php'; ?>
 			<?php elseif ( $_GET['action'] == 'delete' ): ?>
 				<div align='left'>Delete question</div>
+				<?php include 'pages/delq.php'; ?>
 			<?php endif; ?>
 	</div>
 	<div id='btmGrid'>
