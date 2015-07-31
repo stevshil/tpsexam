@@ -12,13 +12,17 @@
 			<?php elseif ( $_GET['action'] == 'add' ): ?>
 				<div align='left'>Adding user</div>
 				<script>
-					changeSize('topGrid','60%');
+					changeSize('topGrid','55%');
 				</script>
 				<?php include 'pages/adduser.php'; ?>
 			<?php elseif ( $_GET['action'] == 'change' ): ?>
 				<div align='left'>Changing user</div>
 			<?php elseif ( $_GET['action'] == 'lock' ): ?>
 				<div align='left'>Locking user</div>
+				<?php include 'pages/lockuser.php'; ?>
+				<script>
+					changeSize('topGrid','60%');
+				</script>
 			<?php elseif ( $_GET['action'] == 'pwreset' ): ?>
 				<div align='left'>Reset users password</div>
 			<?php endif; ?>
