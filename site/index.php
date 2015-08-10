@@ -55,6 +55,9 @@ TPS Services Limited Exam Centre
 	if ( $page == "questions" ) {
 		include 'pages/questions.php';
 	}
+	if ( $page == "tests" ) {
+		include 'pages/tests.php';
+	}
 ?>
 
 <div id='footer'></div>

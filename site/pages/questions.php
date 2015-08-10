@@ -27,7 +27,7 @@
 	<div id='btmGrid'>
 		<div id='menu' align='left'>
 			<table style='cursor: pointer'><tr>
-			<td class='menu'><a href='index.php?page=questions&action=add'>Add Question</a></td><td class='menu'><a href='index.php?page=questions&action=change'>Change Question</a></td><td class='menu'><a href='index.php?page=questions&action=delete'>Delete Questions</a></td></tr>
+			<td class='menu'><a href='index.php?page=questions&action=cat'>Manage Categories</a></td><td class='menu'><a href='index.php?page=questions&action=add'>Add Question</a></td><td class='menu'><a href='index.php?page=questions&action=change'>Change Question</a></td><td class='menu'><a href='index.php?page=questions&action=delete'>Delete Questions</a></td></tr>
 			</table>
 		</div>
 		<?php endif; ?>

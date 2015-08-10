@@ -12,8 +12,8 @@ input.form { font-size: 12pt }
 select.form { font-size: 12pt }
 textarea.form {font-size: 12pt }
 button.form { font-size: 12pt }
-#Adminmenu { display: none; z-index: 999; width: 210px; margin-left: 76px; background-image: url(pix/gradient.png); background-repeat: repeat-y; position: absolute; height: 155px; padding: 0px 10px 0px 10px; float: left}
-#Testmenu { display: none; z-index: 999; width: 150px; margin-left: 153px; background-image: url(pix/gradient.png); background-repeat: repeat-y; position: absolute; height: 80px; padding: 0px 10px 0px 10px; float: left}
+#Adminmenu { display: none; z-index: 999; width: 210px; margin-left: 76px; background-image: url(pix/gradient.png); background-repeat: repeat-y; position: absolute; height: 100px; padding: 0px 10px 0px 10px; float: left}
+#Testmenu { display: none; z-index: 999; width: 150px; margin-left: 153px; background-image: url(pix/gradient.png); background-repeat: repeat-y; position: absolute; height: 60px; padding: 0px 10px 0px 10px; float: left}
 
 #mainbody { width: 100%; margin-top: 5px; z-index: 1; margin-right: 224px}
 #subHeader { width: 97%; padding-top: 1px; z-index: 1; height: 5%; border-radius: 0px 10px; background: lightblue; padding-left: 20px; padding-bottom: 1px; }
