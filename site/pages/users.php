@@ -15,7 +15,15 @@
 				</script>
 				<?php include 'pages/adduser.php'; ?>
 			<?php elseif ( $_GET['action'] == 'change' ): ?>
-				<div align='left'>Changing user</div>
+				<script>
+					changeSize('topGrid','55%');
+				</script>
+				<?php include 'pages/chuser.php'; ?>
+			<?php elseif ( $_GET['action'] == 'changeuser'): ?>
+				<script>
+					changeSize('topGrid','55%');
+				</script>
+				<?php include 'pages/chuserdets.php'; ?>
 			<?php elseif ( $_GET['action'] == 'lock' ): ?>
 				<?php include 'pages/lockuser.php'; ?>
 				<script>

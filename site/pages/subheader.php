@@ -15,6 +15,19 @@
 		} else {
 			showtext = "User administration";
 		}
+	} else if ( pagetype == 'questions' ) {
+		subparam = getURLParameter('action');
+		if ( subparam == 'cat' ) {
+			showtext = 'Manage categories';
+		} else if ( subparam == 'add' ) {
+			showtext = 'Add a new question';
+		} else if ( subparam == 'change' ) {
+			showtext = 'Change a question';
+		} else if ( subparam == 'delete' ) {
+			showtext = 'Delete question';
+		} else {
+			showtext = 'Question administration';
+		}
 	} else {
 		showtext="Welcome to Exam Centre";
 	}

@@ -22,6 +22,11 @@
 			<?php elseif ( $_GET['action'] == 'delete' ): ?>
 				<div align='left'>Delete question</div>
 				<?php include 'pages/delq.php'; ?>
+			<?php elseif ( $_GET['action'] == 'cat' ): ?>
+				<script>
+					changeSize('topGrid','60%');
+				</script>
+				<?php include 'pages/mgmcat.php'; ?>
 			<?php endif; ?>
 	</div>
 	<div id='btmGrid'>
