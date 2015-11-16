@@ -78,6 +78,7 @@ function dbupdate($table,$columns,$condition) {
 			return false;
 		}
 	} catch (PDOException $e) {
+		echo $e->getMessage()."<br>";
 		return false;
 	}
 }

@@ -55,7 +55,7 @@
 
 		# Perform DB add here, and any error messages
 		set_include_path(get_include_path() . ":/home/web-apps/tps-exam/site");
-		include 'api/dbfunc.php';
+		include '../api/dbfunc.php';
 		try { 
 			$data = dbquery("LoginID,Email,Postcode","users","WHERE LoginID='" . $_POST['LoginID'] . "'");
 			if ( isset($data[0]) ) {

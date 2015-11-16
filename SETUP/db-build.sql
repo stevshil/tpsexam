@@ -20,7 +20,7 @@ create table IF NOT EXISTS users (
 	Address3 VARCHAR(150) NULL,
 	TownCity VARCHAR(150) NULL,
 	County VARCHAR(150) NULL,
-	Country VARCHAR(4) NOT NULL,
+	Country VARCHAR(30) NOT NULL,
 	Postcode VARCHAR(10) NOT NULL,
 	Phone VARCHAR(25) NULL,
 	Email VARCHAR(150) NOT NULL,
