@@ -11,7 +11,11 @@
 	<select name='users' size=12>
 	<?php
 		try {
-			$userlist = dbquery("users.UserID,LoginID,FullName,Locked","users,shadow","WHERE users.UserID=shadow.UserID AND (Locked is null OR Locked = '0') AND users.UserID != 1");
+			if ( $_SESSION['loginname'] == 'Admin' ) {
+				$userlist = dbquery("users.UserID,LoginID,FullName,Locked","users,shadow","WHERE users.UserID=shadow.UserID AND (Locked is null OR Locked = '0') AND users.UserID != 1");
+			} else {
+				$userlist = dbquery("users.UserID,LoginID,FullName,Locked","users,shadow","WHERE users.UserID=shadow.UserID AND (Locked is null OR Locked = '0') AND users.UserID != 1 AND users.LoginID = '" .$_SESSION['loginname'] . "'");
+			}
 		} catch (Exception $e) {
 			echo "<OPTION>Error: " . $e->getMessage() . "</OPTION>";
 		}

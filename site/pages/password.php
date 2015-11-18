@@ -1,6 +1,11 @@
 <?php
 	set_include_path(get_include_path() . ":/home/web-apps/tps-exam/site");
-	include 'api/dbfunc.php';
+	if ( file_exists("../api/dbfunc.php") ) {
+		include '../api/dbfunc.php';
+	} else {
+		include 'api/dbfunc.php';
+	}
+
 	if ( session_status() != PHP_SESSION_ACTIVE )
 		session_start();
 
