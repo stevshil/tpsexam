@@ -97,6 +97,7 @@ function dbinsert($table,$columns,$values) {
 	}
 
 	$statement = $conn->prepare("INSERT INTO $table ($columns) VALUES($values)");
+	#echo "INSERT INTO $table ($columns) VALUES($values)<br>";
 	try {
 		if ( $statement->execute() ) {
 			return true;
@@ -126,6 +127,7 @@ function dbdel($table,$condition) {
 	}
 
 	$statement = $conn->prepare("DELETE FROM $table $condition");
+	#echo "DELETE FROM $table $condition<br>";
 	try {
 		if ( $statement->execute() ) {
 			return true;
