@@ -8,7 +8,8 @@
                	require_once 'api/dbfunc.php';
        	}
 
-	if ( $_POST['action'] == 'addCat' ) {
+	if ( isset($_POST['action']) ) {
+	  if ( $_POST['action'] == 'addCat' ) {
 		echo "Adding Category ".$_POST['CategoryName']."<br>";
 		$fields = "CategoryName,DateAdded,AddedBy";
 		$values = "'".$_POST['CategoryName']."',Now(),".$_SESSION['UserID'];
@@ -41,7 +42,14 @@
 	}
 	if ( $_POST['action'] == 'changeCat' ) {
 		echo "Changing Category";
+		$catID=$_POST['CategoryID'];
+		$catName=$_POST['CategoryName'];
+		if ( dbupdate("categories","CategoryName='$catName'","WHERE CatID = $catID") ) {
+			echo "Category deleted<br>";
+			header("Refresh: 0; url=/exam/index.php?page=questions&action=cat");
+		}
 	}
+      }
 ?>
 
 <?php if ( $_SESSION["loggedin"] == "yes" && isset($_SESSION["UserID"]) ): ?>
@@ -88,6 +96,7 @@
 <p>&nbsp;<input type=submit value='Change Category'>
 </td></tr></table>
 </td></tr>
+</table>
 <?php else: ?>
 	You are not logged in to the system
 <?php endif; ?>

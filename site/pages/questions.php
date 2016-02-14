@@ -11,7 +11,7 @@
 				<div align='left'>Choose actions from the bottom menu</div>
 			<?php elseif ( $_GET['action'] == 'add' ): ?>
 				<script>
-					changeSize('topGrid','65%');
+					changeSize('topGrid','60%');
 				</script>
 				<?php include 'pages/addq.php'; ?>
 			<?php elseif ( $_GET['action'] == 'change' ): ?>
