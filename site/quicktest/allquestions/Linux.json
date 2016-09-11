@@ -1,0 +1,30 @@
+{
+	"What parses the commands and re-writes them before execution": [
+		{"The Unix program":false},
+		{"A Unix shell: such as the KornShell":true},
+		{"The Unix kernel":false},
+		{"Some piece of hardware":false},
+		{"None of the above":false}
+	],
+	"What key presses stop a foreground process": [
+		{"CTRL DELETE":false},
+		{"CTRL C":false},
+		{"CTRL Z":true},
+		{"CTRL \\":false},
+		{"ESC K":false}
+	],
+	"Where are Unix configuration files stored": [
+		{"/usr/bin":false},
+		{"/usr/sbin":false},
+		{"/tmp":false},
+		{"/etc":true},
+		{"/":false}
+	],
+	"Which of the following is NOT a valid Unix filename": [
+		{"\"This is a file\"":false},
+		{"some_file_this_is":false},
+		{"A\\ file\\ with\\ a \\*\\ in\\ it":false},
+		{"this/is/a/valid/file":true},
+		{"'some unix file'":false}
+	]
+}

@@ -28,6 +28,8 @@
 		} else {
 			showtext = 'Question administration';
 		}
+        } else if ( pagetype == 'qt' ) {
+		showtext = 'Create Quick Test';
 	} else {
 		showtext="Welcome to Exam Centre";
 	}

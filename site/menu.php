@@ -14,6 +14,7 @@
 <td class='menu' id='Test' onMouseOver='showMenu("Test")'>Take Test</td>
 <td class='menu' id='History' onMouseOver='menuTimeout()' onClick='location.href="history.php"'>Your Test History</td>
 <td class='menu' id='Logout' onMouseOver='menuTimeout()' onClick='location.href="logout.php"'>Logout</td>
+<td class='menu' id='Quick' onMouseOver='menuTimeout()' onClick='location.href="quick.php"'>Quick Test</td>
 </tr></table>
 <div id='Adminmenu' onMouseOut='showMenu("Admin")'>
 <a class='menu' href='index.php?page=pw'>Change Password</a><br>

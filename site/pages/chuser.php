@@ -11,7 +11,7 @@
 	<select name='users' size=12>
 	<?php
 		try {
-			if ( $_SESSION['loginname'] == 'Admin' ) {
+			if ( strcasecmp($_SESSION['loginname'],'admin') == 0 ) {
 				$userlist = dbquery("users.UserID,LoginID,FullName,Locked","users,shadow","WHERE users.UserID=shadow.UserID AND (Locked is null OR Locked = '0') AND users.UserID != 1");
 			} else {
 				$userlist = dbquery("users.UserID,LoginID,FullName,Locked","users,shadow","WHERE users.UserID=shadow.UserID AND (Locked is null OR Locked = '0') AND users.UserID != 1 AND users.LoginID = '" .$_SESSION['loginname'] . "'");

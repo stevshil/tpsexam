@@ -1,0 +1,7 @@
+{
+	"question": [
+		{"possible answer",false},
+		{"possible answer2",false},
+		{"possible answer3",true}
+	]
+}

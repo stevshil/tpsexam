@@ -1,0 +1,15 @@
+{
+	"Which of the following components is not part of the Scripting.FileSystemObject": [
+		{"Drive",false},
+		{"Folders",false},
+		{"BinaryStream",true},
+		{"TextStream",false},
+		{"File",false}
+	],
+	"A VB Script contains the following code\nDim fso, myFolder\nSet fso = CreateObject("Scripting.FileSystemObject")\nSet myFolder = fso.GetFolder("c:\MyDirectory")\nmyFolder.Delete\n\nWhich of the following is True, if there are files in the directory": [
+		{"The script generates an error as it is unable to delete the directory",false},
+		{"The script generates a prompt asking the user if they wish to delete the directory",false},
+		{"Only the files in the directory are deleted",false},
+		{"The directory and all of its content are removed without any questions or errors",true}
+	]
+}
